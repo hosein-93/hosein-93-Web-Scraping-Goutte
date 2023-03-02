@@ -1,0 +1,23 @@
+@mixin scrollbar {
+        overflow: auto;
+        /* width */
+        &::-webkit-scrollbar {
+                width: 4px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 4px var(--bs-gray-500);
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+                background: var(--bs-purple);
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+                background: var(--bs-indigo);
+        }
+}
+

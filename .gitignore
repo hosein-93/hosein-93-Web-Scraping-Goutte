@@ -1,0 +1,7 @@
+document/
+vendor/
+assets/font/
+CrawlerResult/
+
+
+composer.lock
