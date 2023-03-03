@@ -43,7 +43,7 @@ class Validation
                 if (!isset($this->data['CrawlerSelector']) || empty($this->data['CrawlerSelector'])) {
                         return false;
                 }
-                $pattern = "/([a-zA-Z0-9 \/\!\@\#\$\%\^|&\*\(\)\_\-\+\=\-\/\[\]\{\}\;\:\'\"\?\.\<\>]+|(,,,)*)*/";
+                $pattern = '/([a-zA-Z0-9 \/\!\@\#\$\%\^|&\*\(\)\_\-\+\=\-\/\[\]\{\}\;\:\'\"\?\.\,\<\>]+|(' . Constants::CRAWLER_FORM['seprator'] . '){1}+[a-zA-Z0-9 \/\!\@\#\$\%\^|&\*\(\)\_\-\+\=\-\/\[\]\{\}\;\:\'\"\?\.\<\>])*|[a-zA-Z0-9 \/\!\@\#\$\%\^|&\*\(\)\_\-\+\=\-\/\[\]\{\}\;\:\'\"\?\.\,\<\>]/';
                 $subject = $this->data['CrawlerSelector'];
                 preg_match_all($pattern, $subject, $matches, PREG_PATTERN_ORDER);
                 return ($matches[0][0] === $subject) ? true : false;
@@ -54,7 +54,7 @@ class Validation
                 if (!isset($this->data['CrawlerLinkSelector']) || empty($this->data['CrawlerLinkSelector'])) {
                         return false;
                 }
-                $pattern = "/([a-zA-Z0-9 \/\!\@\#\$\%\^|&\*\(\)\_\-\+\=\-\/\[\]\{\}\;\:\'\"\?\.\<\>]+|(,,,)*)*/";
+                $pattern = '/([a-zA-Z0-9 \/\!\@\#\$\%\^|&\*\(\)\_\-\+\=\-\/\[\]\{\}\;\:\'\"\?\.\,\<\>]+|(' . Constants::CRAWLER_FORM['seprator'] . '){1}+[a-zA-Z0-9 \/\!\@\#\$\%\^|&\*\(\)\_\-\+\=\-\/\[\]\{\}\;\:\'\"\?\.\<\>])*|[a-zA-Z0-9 \/\!\@\#\$\%\^|&\*\(\)\_\-\+\=\-\/\[\]\{\}\;\:\'\"\?\.\,\<\>]/';
                 $subject = $this->data['CrawlerLinkSelector'];
                 preg_match_all($pattern, $subject, $matches, PREG_PATTERN_ORDER);
                 return ($matches[0][0] === $subject) ? true : false;

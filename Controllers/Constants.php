@@ -19,7 +19,7 @@ class Constants
                 'selector' => 'CrawlerSelector',
                 'selectorLink' => 'CrawlerLinkSelector',
                 'submit' => 'CrawlerSubmit',
-                'seprator' => ',,,'
+                'seprator' => '~~~'
         ];
         const JWT_VALUES = [
                 'key' => 'web crawling with goutte',

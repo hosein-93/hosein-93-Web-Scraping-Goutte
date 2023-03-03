@@ -7,9 +7,11 @@ use Controllers\Constants;      // فرآحوانی کلاس ثابت ها
 use Firebase\JWT\JWT;   // مرتبط با کتابخانه jwt
 use Firebase\JWT\Key;   // مرتبط با کتابخانه jwt
 
-use Goutte\Client;      // مرتبط با کتابخانه goutte
+interface content {
+        public function content();
+}
 
-class Crawler
+abstract class Crawler implements content
 {
         protected $jwtValue = Constants::JWT_VALUES;
         protected $data;
@@ -26,13 +28,13 @@ class Crawler
                 $selectorArray = explode(Constants::CRAWLER_FORM['seprator'], $this->data->selector);
                 if (count($selectorArray) > 1) :
                         $this->data->selectors = [];
-                        foreach($selectorArray as $key => $value) :
+                        foreach ($selectorArray as $key => $value) :
                                 $this->data->selectors[$key] = $value;
                         endforeach;
                         $this->data->selectors = (object)$this->data->selectors;
-                 else :
+                else :
                         $this->data->selectors = $this->data->selector;
-                 endif;
+                endif;
 
                 if (
                         $this->data->status === Constants::CRAWLER_FORM['status']['link']
@@ -51,10 +53,5 @@ class Crawler
                 endif;
 
                 return $this->data;
-        }
-
-        public function content()
-        {
-                return die("<p class='bg-dark text-warning rounded-2 p-3 my-0'>متد content موجود در کلاس Crawler باید در کلاس فرزند overwrite شود</p>");
         }
 }
